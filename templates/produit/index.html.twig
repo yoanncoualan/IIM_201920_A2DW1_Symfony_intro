@@ -4,8 +4,11 @@
 
 {% block body %}
 
-    <h1>Liste des produits</h1>
+    <h1>{{ 'produit.titre'|trans }}</h1>
     {% if produits is not empty %}
+        <p>
+            {{ 'produit.there_is'|trans({'nb':produits|length}) }}
+        </p>
         <table class="table">
             <thead>
                 <tr>

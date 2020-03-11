@@ -8,13 +8,14 @@ use App\Entity\Produit;
 use App\Form\ProduitType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ProduitController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request)
+    public function index(Request $request, TranslatorInterface $translator)
     {
         // Récupère Doctrine (service de gestion de BDD)
         $pdo = $this->getDoctrine()->getManager();
@@ -39,7 +40,10 @@ class ProduitController extends AbstractController
                     );
                 }
                 catch(FileException $e){
-                    $this->addFlash("danger","Le fichier n'a pas pu etre uploadé");
+                    $this->addFlash(
+                        "danger", 
+                        $translator->trans('file.error')
+                    );
                     return $this->redirectToRoute('home');
                 }
 

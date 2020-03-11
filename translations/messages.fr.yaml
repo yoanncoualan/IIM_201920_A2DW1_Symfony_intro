@@ -1,0 +1,9 @@
+# /translations/messages.fr.yaml
+produit:
+  titre: 'Liste des produits'
+  there_is: 'Il y a nb produits'
+
+file:
+  error: "Le fichier n'a pas pu etre uploadé"
+
+Nom: "Nom"
