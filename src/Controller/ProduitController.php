@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * @Route("/{_locale}")
+ */
 class ProduitController extends AbstractController
 {
     /**
@@ -35,7 +38,7 @@ class ProduitController extends AbstractController
 
                 try{
                     $fichier->move(
-                        $this->getParameter('upload_dir'),
+                        $this->getParameter('dossier'),
                         $nomFichier
                     );
                 }
